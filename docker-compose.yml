@@ -141,7 +141,7 @@ services:
       - document-network
 
   indexing-service:
-    build: ./indexing-service
+    image: eclipse-temurin:17-jre
     container_name: indexing-service
     environment:
       SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
