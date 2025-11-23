@@ -8,22 +8,22 @@ echo ""
 # Check if JARs exist
 missing_jars=0
 
-if [ ! -f "orchestrator-service/target/orchestrator-service-1.0.0.jar" ]; then
+if [ ! -f "server/orchestrator-service/target/orchestrator-service-1.0.0.jar" ]; then
     echo "⚠️  orchestrator-service JAR not found"
     missing_jars=1
 fi
 
-if [ ! -f "extraction-service/target/extraction-service-1.0.0.jar" ]; then
+if [ ! -f "server/extraction-service/target/extraction-service-1.0.0.jar" ]; then
     echo "⚠️  extraction-service JAR not found"
     missing_jars=1
 fi
 
-if [ ! -f "indexing-service/target/indexing-service-1.0.0.jar" ]; then
+if [ ! -f "server/indexing-service/target/indexing-service-1.0.0.jar" ]; then
     echo "⚠️  indexing-service JAR not found"
     missing_jars=1
 fi
 
-if [ ! -f "ui-service/target/ui-service-1.0.0.jar" ]; then
+if [ ! -f "server/ui-service/target/ui-service-1.0.0.jar" ]; then
     echo "⚠️  ui-service JAR not found"
     missing_jars=1
 fi

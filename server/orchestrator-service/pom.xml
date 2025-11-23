@@ -6,27 +6,32 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
-        <relativePath/>
+        <groupId>com.example</groupId>
+        <artifactId>document-server</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <groupId>com.example</groupId>
-    <artifactId>extraction-service</artifactId>
-    <version>1.0.0</version>
-    <name>extraction-service</name>
-    <description>Document Text Extraction Service with Apache Tika</description>
-    
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+    <artifactId>orchestrator-service</artifactId>
+    <name>orchestrator-service</name>
+    <description>Document Processing Orchestrator with H2 and MinIO</description>
     
     <dependencies>
-        <!-- Spring Boot Web (for health checks) -->
+        <!-- Spring Boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <!-- Spring Data JPA + H2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
         
         <!-- RabbitMQ -->
@@ -39,19 +44,6 @@
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
-            <version>8.5.7</version>
-        </dependency>
-        
-        <!-- Apache Tika -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>2.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers-standard-package</artifactId>
-            <version>2.9.1</version>
         </dependency>
         
         <!-- Lombok -->
@@ -61,20 +53,26 @@
             <optional>true</optional>
         </dependency>
         
-        <!-- Actuator -->
+        <!-- Actuator for health checks -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        
+        <!-- Apache Camel -->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-file-starter</artifactId>
         </dependency>
         
         <!-- JSON Processing -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
         
         <!-- Test -->

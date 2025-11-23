@@ -6,33 +6,21 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
-        <relativePath/>
+        <groupId>com.example</groupId>
+        <artifactId>document-server</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <groupId>com.example</groupId>
-    <artifactId>indexing-service</artifactId>
-    <version>1.0.0</version>
-    <name>indexing-service</name>
-    <description>Document Indexing and Search Service with Elasticsearch</description>
-    
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+    <artifactId>extraction-service</artifactId>
+    <name>extraction-service</name>
+    <description>Document Text Extraction Service with Apache Tika</description>
     
     <dependencies>
-        <!-- Spring Boot Web -->
+        <!-- Spring Boot Web (for health checks) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        
-        <!-- Spring Data Elasticsearch -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         
         <!-- RabbitMQ -->
@@ -45,7 +33,16 @@
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
-            <version>8.5.7</version>
+        </dependency>
+        
+        <!-- Apache Tika -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers-standard-package</artifactId>
         </dependency>
         
         <!-- Lombok -->

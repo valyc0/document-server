@@ -104,7 +104,7 @@ services:
       - SPRING_RABBITMQ_PASSWORD=admin
       - CAMEL_WATCH_DIR=/watch
     volumes:
-      - ./orchestrator-service/target/orchestrator-service-1.0.0.jar:/app.jar:ro
+      - ./server/orchestrator-service/target/orchestrator-service-1.0.0.jar:/app.jar:ro
       - ./watch:/watch
     command: ["java", "-jar", "/app.jar"]
     depends_on:
@@ -127,7 +127,7 @@ services:
       SPRING_RABBITMQ_USERNAME: admin
       SPRING_RABBITMQ_PASSWORD: admin
     volumes:
-      - ./extraction-service/target/extraction-service-1.0.0.jar:/app.jar:ro
+      - ./server/extraction-service/target/extraction-service-1.0.0.jar:/app.jar:ro
     command: ["java", "-jar", "/app.jar"]
     depends_on:
       minio:
@@ -154,7 +154,7 @@ services:
       SPRING_RABBITMQ_USERNAME: admin
       SPRING_RABBITMQ_PASSWORD: admin
     volumes:
-      - ./indexing-service/target/indexing-service-1.0.0.jar:/app.jar:ro
+      - ./server/indexing-service/target/indexing-service-1.0.0.jar:/app.jar:ro
     command: ["java", "-jar", "/app.jar"]
     depends_on:
       elasticsearch:
@@ -176,7 +176,7 @@ services:
       ORCHESTRATOR_URL: http://orchestrator-service:8080
       VAADIN_PRODUCTIONMODE: "true"
     volumes:
-      - ./ui-service/target/ui-service-1.0.0.jar:/app.jar:ro
+      - ./server/ui-service/target/ui-service-1.0.0.jar:/app.jar:ro
     command: ["java", "-jar", "/app.jar"]
     depends_on:
       - orchestrator-service

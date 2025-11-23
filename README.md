@@ -172,20 +172,35 @@ curl http://localhost:8080/api/documents/stats
 
 ```
 document-server/
-├── orchestrator-service/       # Port 8080 - H2 + MinIO + RabbitMQ
-├── extraction-service/         # Port 8081 - Tika + MinIO + RabbitMQ
-├── indexing-service/           # Port 8082 - Elasticsearch + MinIO + RabbitMQ
+├── server/                     # Multi-module Maven project
+│   ├── pom.xml                # Parent POM
+│   ├── orchestrator-service/  # Port 8080 - H2 + MinIO + RabbitMQ
+│   ├── extraction-service/    # Port 8081 - Tika + MinIO + RabbitMQ
+│   ├── indexing-service/      # Port 8082 - Elasticsearch + MinIO + RabbitMQ
+│   └── ui-service/            # Port 8090 - Vaadin UI
 ├── docker-compose.yml
+├── build.sh                   # Build all modules
+├── start.sh                   # Start all services
 ├── ARCHITECTURE.md
 └── README.md
 ```
 
 ## 🔧 Development
 
+### Build Tutti i Moduli
+
+```bash
+cd server
+mvn clean package
+
+# Oppure usa lo script
+./build.sh
+```
+
 ### Build Singolo Servizio
 
 ```bash
-cd orchestrator-service
+cd server/orchestrator-service
 mvn clean package
 java -jar target/orchestrator-service-1.0.0.jar
 ```
